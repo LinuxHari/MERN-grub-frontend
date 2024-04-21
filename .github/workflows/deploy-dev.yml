@@ -12,6 +12,12 @@ jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
     environment: development
+    env:
+          VITE_API_BASE_URL: ${{ vars.VITE_API_BASE_URL }}
+          VITE_AUTH0_DOMAIN: ${{ secrets.VITE_AUTH0_DOMAIN }}
+          VITE_AUTH0_CLIENT_ID: ${{ secrets.VITE_AUTH0_CLIENT_ID }}
+          VITE_AUTH0_CALLBACK_URL: ${{ secrets.VITE_AUTsH0_CALLBACK_URL }}
+          VITE_AUTH0_AUDIENCE: ${{ secrets.VITE_AUTH0_AUDIENCE }}
 
     steps:
       - name: Checkout Repository
@@ -23,8 +29,11 @@ jobs:
           node-version: '20.x'
       - name: Replace import.meta with process
         run: |
-            find src -type f \( -name "*.ts" -o -name "*.tsx" \) -exec sed -i 's/import\.meta/process/g' {} +
-            cat ./src/auth/Auth0ProviderWithNavigate.tsx
+            echo ${{ vars.VITE_API_BASE_URL }}
+            echo ${{ secrets.VITE_AUTH0_DOMAIN }}
+            echo ${{ secrets.VITE_AUTH0_CLIENT_ID }}
+            echo ${{ secrets.VITE_AUTsH0_CALLBACK_URL }}
+            echo ${{ secrets.VITE_AUTH0_AUDIENCE }}
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
