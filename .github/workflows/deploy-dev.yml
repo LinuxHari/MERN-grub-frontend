@@ -30,6 +30,7 @@ jobs:
       - name: Replace import.meta with process
         run: |
             find src -type f \( -name "*.ts" -o -name "*.tsx" \) -exec sed -i 's/import\.meta/process/g' {} +
+            cat ./src/auth/Auth0ProviderWithNavigate.tsx
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
