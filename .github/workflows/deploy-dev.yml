@@ -12,12 +12,6 @@ jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
     environment: development
-    env:
-          VITE_API_BASE_URL: ${{ vars.VITE_API_BASE_URL }}
-          VITE_AUTH0_DOMAIN: ${{ secrets.VITE_AUTH0_DOMAIN }}
-          VITE_AUTH0_CLIENT_ID: ${{ secrets.VITE_AUTH0_CLIENT_ID }}
-          VITE_AUTH0_CALLBACK_URL: ${{ secrets.VITE_AUTsH0_CALLBACK_URL }}
-          VITE_AUTH0_AUDIENCE: ${{ secrets.VITE_AUTH0_AUDIENCE }}
 
     steps:
       - name: Checkout Repository
