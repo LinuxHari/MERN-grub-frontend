@@ -9,7 +9,7 @@ on:
       - 'development'
 
 jobs:
-  deploy:
+  Deploy-Preview:
     runs-on: ubuntu-latest
     environment: development
     steps:
@@ -29,8 +29,8 @@ jobs:
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
         env:
-          VITE_API_BASE_URL: https://localhost:6030
-          VITE_AUTH0_DOMAIN: dev-vxhscity7m14cski.us.auth0.com
-          VITE_AUTH0_CLIENT_ID: sF0zfVTJUxtoI2gXBEmw0EU5dbmdvFEy
-          VITE_AUTH0_CALLBACK_URL: https://mern-grub-dev.vercel.app
-          VITE_AUTH0_AUDIENCE: MERN-Grub-Api
+          VITE_API_BASE_URL: ${{ vars.VITE_API_BASE_URL }}
+          VITE_AUTH0_DOMAIN: ${{ secrets.VITE_AUTH0_DOMAIN }}
+          VITE_AUTH0_CLIENT_ID: ${{ secrets.VITE_AUTH0_CLIENT_ID }}
+          VITE_AUTH0_CALLBACK_URL: ${{ secrets.VITE_AUTH0_CALLBACK_URL }}
+          VITE_AUTH0_AUDIENCE: ${{ secrets.VITE_AUTH0_AUDIENCE }}
