@@ -9,13 +9,13 @@ const Auth0ProviderWithNavigate = ({ children }: Auth0ProviderWithNavigateProps)
   const navigate = useNavigate()
   const domain = import.meta.env.VITE_AUTH0_DOMAIN
   const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID
-  const redicrectUri = import.meta.env.VITE_AUTH0_CALLBACK_URL
+  const redicrectUri = window.origin
   const audience = import.meta.env.VITE_AUTH0_AUDIENCE
 
   console.log(domain, clientId, redicrectUri, audience, "envs");
   
 
-  if (!domain || !clientId || !redicrectUri || !audience) {
+  if (!domain || !clientId || !audience) {
     throw new Error("Unable to initialise auth")
   }
 
