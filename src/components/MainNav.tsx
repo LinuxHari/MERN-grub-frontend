@@ -13,8 +13,6 @@ const MainNav = () => {
         onClick={async () => await loginWithRedirect()}
       >Log In</Button>}
       </span>
-     
-
   )
 }
 
