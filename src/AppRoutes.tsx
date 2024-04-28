@@ -5,12 +5,14 @@ import AuthCallbackPage from "./pages/AuthCallbackPage"
 import UserProfilePage from "./pages/UserProfilePage"
 import ProtectedRoute from "./auth/ProtectedRoute"
 import ManageRestaurantPage from "./pages/ManageRestaurantPage"
+import { Search } from "lucide-react"
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout showHero={true}><HomePage/></Layout>} />
       <Route path="/auth-callback" element={<AuthCallbackPage/>}/>
+      <Route path="/search/:location" element={<Layout showHero={false}><Search/></Layout>}/>
       <Route element={<ProtectedRoute/>}>
       <Route path="/user-profile" element={<Layout><UserProfilePage/></Layout>} />
       <Route path="/manage-restaurant" element={<Layout><ManageRestaurantPage/></Layout>} />
