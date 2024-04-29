@@ -21,21 +21,15 @@ const SearchPage = () => {
     searchQuery: "",
     page: 1,
     selectedCuisines: [],
-    sortOption: "bestMatch"
+    sortOption: "bestMatch",
   })
 
   const [isExpanded, setIsExpanded] = useState<boolean>(false)
 
   const { results, isLoading } = useSearchRestaurants(SearchState, city)
 
-  const setSortOption = (sortOption: string) => (
-    setSearchState((prevState) => (
-      {...prevState,
-        sortOption,
-        page: 1
-      }
-    ))
-  )
+  const setSortOption = (sortOption: string) =>
+    setSearchState((prevState) => ({ ...prevState, sortOption, page: 1 }))
 
   if (isLoading) {
     return <span>Loading ...</span>
@@ -94,12 +88,15 @@ const SearchPage = () => {
           onReset={resetSearch}
         />
         <div className="flex justify-between flex-col gap-3 lg:flex-row">
-        <SearchResultsInfo total={results.pagination.total} city={city} />
-        <SortOptionDropdown sortOption={SearchState.sortOption} onChange={(value) => setSortOption(value)}/>
+          <SearchResultsInfo total={results.pagination.total} city={city} />
+          <SortOptionDropdown
+            sortOption={SearchState.sortOption}
+            onChange={(value) => setSortOption(value)}
+          />
         </div>
         {results.data.map((restaurant) => (
           <SearchResultsCard restaurant={restaurant} />
-        ))} 
+        ))}
         <PaginationSelector
           page={results.pagination.page}
           pages={results.pagination.pages}

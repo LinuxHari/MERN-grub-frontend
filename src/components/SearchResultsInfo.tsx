@@ -14,7 +14,6 @@ const SearchResultsInfo = ({ total, city }: Props) => {
           Change Location
         </Link>
       </span>
-      
     </div>
   )
 }

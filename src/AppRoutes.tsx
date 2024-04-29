@@ -10,12 +10,40 @@ import { Search } from "lucide-react"
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Layout showHero={true}><HomePage/></Layout>} />
-      <Route path="/auth-callback" element={<AuthCallbackPage/>}/>
-      <Route path="/search/:location" element={<Layout showHero={false}><Search/></Layout>}/>
-      <Route element={<ProtectedRoute/>}>
-      <Route path="/user-profile" element={<Layout><UserProfilePage/></Layout>} />
-      <Route path="/manage-restaurant" element={<Layout><ManageRestaurantPage/></Layout>} />
+      <Route
+        path="/"
+        element={
+          <Layout showHero={true}>
+            <HomePage />
+          </Layout>
+        }
+      />
+      <Route path="/auth-callback" element={<AuthCallbackPage />} />
+      <Route
+        path="/search/:location"
+        element={
+          <Layout showHero={false}>
+            <Search />
+          </Layout>
+        }
+      />
+      <Route element={<ProtectedRoute />}>
+        <Route
+          path="/user-profile"
+          element={
+            <Layout>
+              <UserProfilePage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/manage-restaurant"
+          element={
+            <Layout>
+              <ManageRestaurantPage />
+            </Layout>
+          }
+        />
       </Route>
       <Route path="/about" element={<Layout>About</Layout>} />
       <Route path="*" element={<Layout>Not Found</Layout>} />

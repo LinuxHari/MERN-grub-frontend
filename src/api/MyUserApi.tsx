@@ -11,21 +11,21 @@ export const useGetMyUser = () => {
   const getMyUserRequest = async (): Promise<User> => {
     const accessToken = await getAccessTokenSilently()
 
-    const response = await fetch(`${API_BASE_URL}/api/my/user`,{
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json"
-        }
+    const response = await fetch(`${API_BASE_URL}/api/my/user`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
     })
-    if(!response.ok){
+    if (!response.ok) {
       throw new Error("Failed to fetch user")
     }
     return response.json()
   }
-  const {data: currentUser, isLoading, error} = useQuery("fetchedCurrentUser", getMyUserRequest)
+  const { data: currentUser, isLoading, error } = useQuery("fetchedCurrentUser", getMyUserRequest)
 
-  if(error){
+  if (error) {
     toast.error(error.toString())
   }
 
@@ -75,30 +75,36 @@ export const useUpdateMyUser = () => {
 
   const updateMyUserRequest = async (formData: UpdateMyUserRequest) => {
     const accessToken = await getAccessTokenSilently()
-    
-    const response = await fetch(`${API_BASE_URL}/api/my/user`,{
+
+    const response = await fetch(`${API_BASE_URL}/api/my/user`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     })
-    if(!response.ok){
+    if (!response.ok) {
       throw new Error("Failed to update user")
     }
     return response.json()
   }
-  const {mutateAsync: updateUser, isLoading, isSuccess, error, reset} = useMutation(updateMyUserRequest)
+  const {
+    mutateAsync: updateUser,
+    isLoading,
+    isSuccess,
+    error,
+    reset,
+  } = useMutation(updateMyUserRequest)
 
-  if(isSuccess){
+  if (isSuccess) {
     toast.success("User profile updated!")
   }
 
-  if(error){
+  if (error) {
     toast.error(error.toString())
     reset()
   }
 
-  return {updateUser, isLoading }
+  return { updateUser, isLoading }
 }

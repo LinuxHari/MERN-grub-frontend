@@ -13,7 +13,7 @@ const Header = () => {
           <MobileNav />
         </div>
         <div className="hidden md:block">
-          <MainNav/>
+          <MainNav />
         </div>
       </div>
     </div>
