@@ -5,7 +5,9 @@ import AuthCallbackPage from "./pages/AuthCallbackPage"
 import UserProfilePage from "./pages/UserProfilePage"
 import ProtectedRoute from "./auth/ProtectedRoute"
 import ManageRestaurantPage from "./pages/ManageRestaurantPage"
-import { Search } from "lucide-react"
+import SearchPage from "./pages/SearchPage"
+import DetailPage from "./pages/DetailPage"
+import OrderStatusPage from "./pages/OrderStatusPage"
 
 const AppRoutes = () => {
   return (
@@ -20,13 +22,21 @@ const AppRoutes = () => {
       />
       <Route path="/auth-callback" element={<AuthCallbackPage />} />
       <Route
-        path="/search/:location"
+        path="/search/:city"
         element={
           <Layout showHero={false}>
-            <Search />
+            <SearchPage />
           </Layout>
         }
       />
+      <Route
+        path="/detail/:restaurantId"
+        element={
+          <Layout showHero={false}>
+            <DetailPage />
+          </Layout>
+        }
+      /> 
       <Route element={<ProtectedRoute />}>
         <Route
           path="/user-profile"
@@ -41,6 +51,14 @@ const AppRoutes = () => {
           element={
             <Layout>
               <ManageRestaurantPage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/order-status"
+          element={
+            <Layout>
+              <OrderStatusPage />
             </Layout>
           }
         />
