@@ -24,7 +24,7 @@ const UsernameMenu = ({ email }: Props) => {
         <CircleUserRound className="text-red-500" />
         {email}
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-white space-y-2 rounded-md mt-2 shadow-lg p-1 w-60">
+      <DropdownMenuContent className="bg-white z-10 space-y-2 rounded-md mt-2 shadow-lg p-1 w-60">
         {/* <DropdownMenuItem>
           <Link to="/manage-restaurant" className="font-bold hover:text-red-500 px-8">
             Manage Restaurant
