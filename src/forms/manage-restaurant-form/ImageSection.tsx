@@ -12,7 +12,7 @@ import { useFormContext } from "react-hook-form"
 const ImageSection = () => {
   const { control, watch } = useFormContext()
 
-  const existingImageUrl = watch("productImg")
+  const existingImageUrl = watch("imageUrl")
 
   return (
     <div className="space-y-2">
@@ -25,7 +25,7 @@ const ImageSection = () => {
       </div>
       <div className="flex flex-col gap-8 md:w-[50%]">
         {existingImageUrl && (
-          <AspectRatio>
+          <AspectRatio ratio={16 / 9}>
             <img src={existingImageUrl} className="rounded-md object-cover h-full w-full" />
           </AspectRatio>
         )}
@@ -38,7 +38,7 @@ const ImageSection = () => {
                 <Input
                   className="bg-white"
                   type="file"
-                  accept=".png, .jpg, .jpeg"
+                  accept=".jpg, .jpeg, .png"
                   onChange={(e) => field.onChange(e.target.files ? e.target.files[0] : null)}
                 />
               </FormControl>

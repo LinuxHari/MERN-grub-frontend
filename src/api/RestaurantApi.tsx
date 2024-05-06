@@ -6,19 +6,19 @@ import { URLSearchParams } from "url"
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const useGetRestaurant = (restaurantId?: string) => {
-    const getMyRestaurantRequest = async(): Promise<Restaurant> => {
-        const response = await fetch(`${API_BASE_URL}/api/restaurant/${restaurantId}`)
+  const getMyRestaurantRequest = async (): Promise<Restaurant> => {
+    const response = await fetch(`${API_BASE_URL}/api/restaurant/${restaurantId}`)
 
-        if(!response.ok){
-            throw new Error("Failed to get restaurant")
-        }
-        return response.json()
+    if (!response.ok) {
+      throw new Error("Failed to get restaurant")
     }
-    const {data: restaurant, isLoading} = useQuery("fetchRestaurant", getMyRestaurantRequest, {
-        enabled: !!restaurantId
-    })
+    return response.json()
+  }
+  const { data: restaurant, isLoading } = useQuery("fetchRestaurant", getMyRestaurantRequest, {
+    enabled: !!restaurantId,
+  })
 
-    return { restaurant, isLoading }
+  return { restaurant, isLoading }
 }
 
 export const useSearchRestaurants = (searchState: SearchState, city?: string) => {

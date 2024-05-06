@@ -14,11 +14,13 @@ const SearchResultsCard = ({ restaurant }: Props) => {
         <img src={restaurant.imageUrl} className="rounded-md w-full h-full object-cover" />
       </AspectRatio>
       <div>
-        <h3 className="text-2xl font-bold tracking-tight mb-2 group-hover:underline"></h3>
+        <h3 className="text-2xl font-bold tracking-tight mb-2 group-hover:underline">
+          {restaurant.restaurantName}
+        </h3>
         <div id="card-content" className="grid md:grid-cols-2 gap-2">
           <div className="flex flex-row flex-wrap">
             {restaurant.cuisines.map((item, index) => (
-              <span className="flex">
+              <span className="flex" key={item + 1}>
                 <span>{item}</span>
                 {index < restaurant.cuisines.length - 1 && <Dot />}
               </span>

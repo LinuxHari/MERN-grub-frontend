@@ -1,4 +1,5 @@
 import { useGetMyUser, useUpdateMyUser } from "@/api/MyUserApi"
+import Loading from "@/components/Loading"
 import UserProfileForm from "@/forms/user-profile-form/UserProfileForm"
 
 const UserProfilePage = () => {
@@ -6,7 +7,7 @@ const UserProfilePage = () => {
   const { updateUser, isLoading: isUpdateLoading } = useUpdateMyUser()
 
   if (isGetLoading) {
-    return <span>Loading...</span>
+    return <Loading />
   }
 
   if (!currentUser) {
@@ -14,7 +15,12 @@ const UserProfilePage = () => {
   }
 
   return (
-    <UserProfileForm currentUser={currentUser} onSave={updateUser} isLoading={isUpdateLoading} />
+    <UserProfileForm
+      currentUser={currentUser}
+      onSave={updateUser}
+      isLoading={isUpdateLoading}
+      buttonText="Update"
+    />
   )
 }
 

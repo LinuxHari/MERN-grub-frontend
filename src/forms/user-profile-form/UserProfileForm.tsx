@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import LoadingButton from "@/components/LoadingButton"
-import Button from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { User } from "@/type"
 import { useEffect } from "react"
 
@@ -34,7 +34,13 @@ type UserProfileFormProps = {
   buttonText?: string
 }
 
-const UserProfileForm = ({ onSave, isLoading, currentUser, title, buttonText }: UserProfileFormProps) => {
+const UserProfileForm = ({
+  onSave,
+  isLoading,
+  currentUser,
+  title,
+  buttonText,
+}: UserProfileFormProps) => {
   const form = useForm<UserFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: currentUser,
@@ -123,7 +129,7 @@ const UserProfileForm = ({ onSave, isLoading, currentUser, title, buttonText }: 
         {isLoading ? (
           <LoadingButton />
         ) : (
-          <Button type="submit" className="bg-orange-500">
+          <Button type="submit" className="bg-red-500">
             {buttonText}
           </Button>
         )}

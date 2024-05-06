@@ -3,7 +3,7 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu"
-import Button from "./ui/button"
+import { Button } from "./ui/button"
 import { DropdownMenuItem } from "./ui/dropdown-menu"
 
 type Props = {
@@ -37,10 +37,13 @@ const SortOptionDropdown = ({ onChange, sortOption }: Props) => {
           Sort by: {selectedSortLabel}
         </Button>
       </DropdownMenuTrigger>
-      \
-      <DropdownMenuContent>
+      <DropdownMenuContent className="z-10 bg-white p-2 rounded-md">
         {SORT_OPTIONS.map((option) => (
-          <DropdownMenuItem className="cursor-pointer" onClick={() => onChange(option.value)}>
+          <DropdownMenuItem
+            key={option.value}
+            className="cursor-pointer"
+            onClick={() => onChange(option.value)}
+          >
             {option.label}
           </DropdownMenuItem>
         ))}

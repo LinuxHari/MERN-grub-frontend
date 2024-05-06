@@ -15,7 +15,7 @@ export type MenuItem = {
 
 export type Restaurant = {
   _id: string
-  name: string
+  restaurantName: string
   address: string
   city: string
   country: string
@@ -27,7 +27,7 @@ export type Restaurant = {
   lastUpdated: string
 }
 
-export type OrderStatus = "placed"| "paid"| "inProgress"| "outForDelivery"| "delivered"
+export type OrderStatus = "placed" | "paid" | "inProgress" | "outForDelivery" | "delivered"
 
 export type Order = {
   _id: string

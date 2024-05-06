@@ -1,4 +1,4 @@
-import Button from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useFormContext } from "react-hook-form"
@@ -12,7 +12,7 @@ const MenuItemInput = ({ index, removeMenuItem }: Props) => {
   const { control } = useFormContext()
 
   return (
-    <div className="flex flex-row items-end gap-2">
+    <div className="flex flex-col sm:flex-row md:items-end gap-2">
       <FormField
         control={control}
         name={`menuItems.${index}.name`}
@@ -42,7 +42,11 @@ const MenuItemInput = ({ index, removeMenuItem }: Props) => {
           </FormItem>
         )}
       />
-      <Button type="button" onClick={removeMenuItem} className="bg-red-500 max-h-fit">
+      <Button
+        type="button"
+        onClick={removeMenuItem}
+        className="bg-red-500 max-h-fit w-fit self-end"
+      >
         Remove
       </Button>
     </div>

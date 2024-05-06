@@ -1,30 +1,40 @@
 import { Order } from "@/type"
 import { Progress } from "./ui/progress"
+import { ORDER_STATUS } from "@/config/order-status-config"
 
 type Props = {
   order: Order
 }
 
 const OrderStatusHeader = ({ order }: Props) => {
-    const getExpectedDelivery = () => {
-        const created = new Date(order.createdAt)
+  const getExpectedDelivery = () => {
+    const created = new Date(order.createdAt)
 
-        created.setMinutes(created.getMinutes() + order.restaurant.estimatedDeliveryTime)
+    created.setMinutes(created.getMinutes() + order.restaurant.estimatedDeliveryTime)
 
-        const hours = created.getHours()
-        const minutes = created.getMinutes()
+    const hours = created.getHours()
+    const minutes = created.getMinutes()
 
-        const paddedMinutes = minutes < 10? `0${minutes}`: minutes
+    const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes
 
-        return `${hours}: ${paddedMinutes}`
-    }
+    return `${hours}: ${paddedMinutes}`
+  }
+
+  const getOrderStatusInfo = () => {
+    return ORDER_STATUS.find((o) => o.value === order.status) || ORDER_STATUS[0]
+  }
+
   return (
     <>
       <h1 className="text-4xl font-bold tracking-tighter flex flex-col gap-5 md:flex-row md:justify-between">
-        <span>Order Status: { order.status }</span>
-        <span>Expected by: {getExpectedDelivery()}</span>
+        <span>
+          Order Status: <span className="whitespace-nowrap">{getOrderStatusInfo().label}</span>
+        </span>
+        <span>
+          Expected by: <span className="whitespace-nowrap">{getExpectedDelivery()}</span>
+        </span>
       </h1>
-      <Progress className = "animate-pulse" value = {50}/>
+      <Progress className="animate-pulse" value={getOrderStatusInfo().progressValue} />
     </>
   )
 }

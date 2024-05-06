@@ -12,8 +12,6 @@ const Auth0ProviderWithNavigate = ({ children }: Auth0ProviderWithNavigateProps)
   const redicrectUri = window.origin
   const audience = import.meta.env.VITE_AUTH0_AUDIENCE
 
-  console.log(domain, clientId, redicrectUri, audience, "envs")
-
   if (!domain || !clientId || !audience) {
     throw new Error("Unable to initialise auth")
   }

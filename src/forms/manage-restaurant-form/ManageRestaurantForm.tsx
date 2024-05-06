@@ -7,7 +7,7 @@ import CuisinesSection from "./CuisinesSection"
 import MenuSection from "./MenuSection"
 import ImageSection from "./ImageSection"
 import LoadingButton from "@/components/LoadingButton"
-import Button from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { Restaurant } from "@/type"
 import { useEffect } from "react"
 
@@ -103,7 +103,10 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 bg-gray-50 p-10 rounded-lg">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-8 bg-gray-50 px-0 md:p-10 rounded-lg"
+      >
         <DetailsSection />
         <Separator />
         <CuisinesSection />

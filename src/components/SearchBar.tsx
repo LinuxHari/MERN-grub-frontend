@@ -4,7 +4,7 @@ import { z } from "zod"
 import { Form, FormControl, FormField, FormItem } from "./ui/form"
 import { Search } from "lucide-react"
 import { Input } from "./ui/input"
-import Button from "./ui/button"
+import { Button } from "./ui/button"
 import { useEffect } from "react"
 
 const formSchema = z.object({
@@ -50,7 +50,7 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className={`flex items-center gap-3 justify-between flex-row border-2 rounded-full p-3 ${form.formState.errors.searchQuery && "border-red-500"}`}
       >
-        <Search strokeWidth={2.5} size={30} className="ml-1 text-orange-500 hidden md:block" />
+        <Search strokeWidth={2.5} size={30} className="ml-1 text-red-500 hidden md:block" />
         <FormField
           control={form.control}
           name="searchQuery"
@@ -69,7 +69,7 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
         <Button onClick={handleReset} type="button" variant="outline" className="rounded-full">
           Reset
         </Button>
-        <Button type="submit" className="rounded-full bg-orange-500">
+        <Button type="submit" className="rounded-full bg-red-500">
           Search
         </Button>
       </form>

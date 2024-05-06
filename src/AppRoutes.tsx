@@ -36,7 +36,7 @@ const AppRoutes = () => {
             <DetailPage />
           </Layout>
         }
-      /> 
+      />
       <Route element={<ProtectedRoute />}>
         <Route
           path="/user-profile"
@@ -63,7 +63,6 @@ const AppRoutes = () => {
           }
         />
       </Route>
-      <Route path="/about" element={<Layout>About</Layout>} />
       <Route path="*" element={<Layout>Not Found</Layout>} />
     </Routes>
   )
