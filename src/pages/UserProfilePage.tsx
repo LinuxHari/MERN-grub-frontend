@@ -11,7 +11,11 @@ const UserProfilePage = () => {
   }
 
   if (!currentUser) {
-    return <span>Unable to load user profile</span>
+    return (
+      <p className="text-center font-semibold p-3 text-2xl md:text-3xl">
+        Unable to load user profile
+      </p>
+    )
   }
 
   return (
