@@ -33,42 +33,36 @@ const AppRoutes = () => {
         path="/detail/:restaurantId"
         element={
           <Layout showHero={false}>
-            <ProtectedRoute>
-              <DetailPage />
-            </ProtectedRoute>
+            <DetailPage />
           </Layout>
         }
       />
-      <Route
-        path="/user-profile"
-        element={
-          <Layout>
-            <ProtectedRoute>
+      <Route element={<ProtectedRoute />}>
+        <Route
+          path="/user-profile"
+          element={
+            <Layout>
               <UserProfilePage />
-            </ProtectedRoute>
-          </Layout>
-        }
-      />
-      <Route
-        path="/manage-restaurant"
-        element={
-          <Layout>
-            <ProtectedRoute>
+            </Layout>
+          }
+        />
+        <Route
+          path="/manage-restaurant"
+          element={
+            <Layout>
               <ManageRestaurantPage />
-            </ProtectedRoute>
-          </Layout>
-        }
-      />
-      <Route
-        path="/order-status"
-        element={
-          <Layout>
-            <ProtectedRoute>
+            </Layout>
+          }
+        />
+        <Route
+          path="/order-status"
+          element={
+            <Layout>
               <OrderStatusPage />
-            </ProtectedRoute>
-          </Layout>
-        }
-      />
+            </Layout>
+          }
+        />
+      </Route>
       <Route path="*" element={<Layout>Not Found</Layout>} />
     </Routes>
   )
