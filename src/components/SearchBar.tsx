@@ -6,6 +6,7 @@ import { Search } from "lucide-react"
 import { Input } from "./ui/input"
 import { Button } from "./ui/button"
 import { useEffect } from "react"
+import { useLocation } from "react-router-dom"
 
 const formSchema = z.object({
   searchQuery: z.string({
@@ -44,6 +45,8 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
     }
   }
 
+  const { pathname } = useLocation()
+
   return (
     <Form {...form}>
       <form
@@ -73,9 +76,11 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
           Search
         </Button>
       </form>
-      <span className="text-gray-500 text-xs">
-        Currently we provide restaurant only in New york
-      </span>
+      {pathname === "/" && (
+        <span className="text-gray-500 text-xs">
+          Currently we provide restaurant only in New york
+        </span>
+      )}
     </Form>
   )
 }
