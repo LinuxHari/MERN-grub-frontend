@@ -73,6 +73,9 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
           Search
         </Button>
       </form>
+      <span className="text-gray-500 text-xs">
+        Currently we provide restaurant only in New york
+      </span>
     </Form>
   )
 }
